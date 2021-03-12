@@ -1,0 +1,26 @@
+.logo {
+  line-height: 0;
+  transition: $lead-transition-settings;
+
+  &--active {
+    transform: scale(4.16) translateX(47.7%) translateY(348%);
+    z-index: 2;
+  }
+}
+
+.logo--active svg {
+  overflow: visible;
+}
+
+
+.logo__text {
+  animation: 1.5s fade-from-right;
+}
+
+.logo__main {
+  animation: 1s fade-from-top;
+}
+
+.logo__name {
+  animation: 1.5s fade-from-left;
+}

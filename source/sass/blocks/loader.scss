@@ -1,0 +1,48 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $color-default-white;
+  padding-bottom: 100px;
+  z-index: 1;
+
+  &--inactive {
+    opacity: 0;
+    transition: opacity $default-transition-settings;
+  }
+}
+
+.loader__desktop {
+  @include viewport--md {
+    display: none;
+  }
+}
+
+.loader__tablet {
+  @include viewport--lg {
+    display: none;
+  }
+
+  @include viewport--md {
+    display: inline;
+  }
+}
+
+.loader span {
+  font-size: 24px;
+  line-height: 22px;
+}
+
+.loader__desktop,
+.loader__tablet {
+  animation: pulse;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
