@@ -16,6 +16,10 @@
     opacity: 0;
     transition: opacity $default-transition-settings;
   }
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .loader__desktop {
@@ -25,9 +29,7 @@
 }
 
 .loader__tablet {
-  @include viewport--lg {
-    display: none;
-  }
+  display: none;
 
   @include viewport--md {
     display: inline;
