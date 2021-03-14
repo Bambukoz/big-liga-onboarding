@@ -1,23 +1,45 @@
 .lead {
+  width: 100%;
   min-height: 685px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  padding-top: 38px;
-  padding-bottom: 40px;
+  justify-content: center;
   background-image: url("../img/bg/bg-main-desktop.svg");
   background-repeat: no-repeat;
   background-position: bottom center;
+  padding-left: 35px;
+  padding-right: 35px;
+  transition: none;
+
+  @include viewport--md {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    background-image: none;
+    transition: transform $lead-transition-settings;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .lead__title {
   width: 562px;
-  padding-top: 72px;
+  padding-top: 118px;
   margin-right: 40px;
   transform: translateX(-100vw);
+  transition: none;
+
+  @include viewport--md {
+    width: 100%;
+    min-width: 100%;
+    min-height: 776px;
+    padding: 246px 35px 40px;
+    margin-right: 0;
+    transform: translateX(100vw);
+  }
 }
 
 .lead__title > h1 {
+  width: 562px;
   font-weight: 400;
   font-size: 96px;
   line-height: 96px;
@@ -27,22 +49,73 @@
 
 .lead__inner {
   width: 352px;
+  padding-top: 46px;
   transform: translateX(100vw);
+
+  @include viewport--md {
+    width: 100%;
+    min-width: 100%;
+    min-height: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-neon-blue;
+    padding-top: 161px;
+    padding-bottom: 40px;
+    transform: translateX(-100vw);
+  }
 }
 
 .lead__inner > svg {
-  margin-bottom: 26px;
+  margin-bottom: 28px;
+
+  @include viewport--md {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 36px;
+  }
 }
 
 .lead__inner > p {
   font-size: 30px;
   line-height: 40px;
   margin: 0;
+
+  @include viewport--md {
+    width: 352px;
+    color: $color-default-white;
+  }
 }
 
 .lead--loaded > .lead__title,
 .lead--loaded > .lead__inner {
   transform: translateX(0);
-  transition: all $lead-transition-settings;
+  transition: transform $lead-transition-settings;
   transition-duration: 0.8s;
+}
+
+.lead__lightnings path {
+  @include viewport--md {
+    fill: $color-default-white;
+  }
+}
+
+.lead__stroke {
+  @include viewport--md {
+    stroke: $color-default-black;
+  }
+}
+
+
+.lead--clicked {
+  @include viewport--md {
+    transform: translateX(100%);
+    transition: transform $lead-transition-settings;
+  }
+}
+
+.lead--nojs {
+  @include viewport--md {
+    flex-direction: column;
+  }
 }

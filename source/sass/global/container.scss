@@ -4,10 +4,6 @@
   margin: 0 auto;
   padding: 0 35px;
 
-  @include viewport--md {
-    padding: 0 24px;
-  }
-
   &--no-padding {
     @include viewport--sm {
       padding: 0;
