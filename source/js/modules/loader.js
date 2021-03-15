@@ -31,7 +31,7 @@ const setLoader = () => {
   disableScrolling();
 };
 
-const hiddenLoaderAfterTimeout = () => {
+const deactivateLoader = () => {
   loader.classList.add(animationClass.LOADER_HIDDEN);
 };
 
@@ -39,27 +39,30 @@ const activatePageHandler = () => {
   loader.classList.add(animationClass.LOADER_INACTIVE);
   logo.classList.remove(animationClass.LOGO_ACTIVE);
   leadBlock.classList.add(animationClass.LEAD_LOADED);
-  setTimeout(hiddenLoaderAfterTimeout, TIMEOUT);
   enableScrolling();
+  setTimeout(deactivateLoader, TIMEOUT);
 };
 
 const activateTabletPageHandler = () => {
   activatePageHandler();
+  document.addEventListener('click', swipeSlideHandler);
+  document.removeEventListener('click', activateTabletPageHandler);
 };
 
 const activateDesktopPageHandler = (evt) => {
   if (evt.key === keyCode.ENTER) {
     activatePageHandler();
+    document.removeEventListener('keydown', activateDesktopPageHandler);
   }
 };
 
 const initLoader = () => {
   if (tabletMedia) {
     document.addEventListener('click', activateTabletPageHandler);
-    leadBlock.addEventListener('click', swipeSlideHandler);
   } else {
     document.addEventListener('keydown', activateDesktopPageHandler);
   }
+  document.removeEventListener('DOMContentLoaded', initLoader);
 };
 
 const pageLoader = () => {

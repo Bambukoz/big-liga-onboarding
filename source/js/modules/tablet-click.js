@@ -4,8 +4,10 @@ const animationClass = {
   LEAD_CLICKED: 'lead--clicked',
 };
 
-const swipeSlideHandler = () => {
-  leadBlock.classList.toggle(animationClass.LEAD_CLICKED);
+const swipeSlideHandler = (evt) => {
+  if (!evt.target.closest('.logo')) {
+    leadBlock.classList.toggle(animationClass.LEAD_CLICKED);
+  }
 };
 
 export {swipeSlideHandler};
